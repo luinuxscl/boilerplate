@@ -16,7 +16,15 @@
       "Bash(find vendor/livewire/flux -name *.blade.php)",
       "Bash(vendor/bin/pint --dirty --format agent)",
       "Bash(npm install:*)",
-      "WebSearch"
+      "WebSearch",
+      "mcp__laravel-boost__application-info",
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git tag:*)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "laravel-boost"
+  ]
 }
