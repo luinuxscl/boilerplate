@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /home/luinux/Projects/boilerplate -maxdepth 2 -not -path */vendor/* -not -path */.git/* -not -path */node_modules/*)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); print\\(data[0][''''text'''']\\)\")",
+      "Bash(composer require:*)",
+      "Bash(php artisan:*)",
+      "Bash(composer show:*)",
+      "Bash(php -r \"require ''vendor/autoload.php''; echo class_exists\\(''Spatie\\\\Permission\\\\Traits\\\\HasRoles''\\) ? ''OK'' : ''NOT FOUND'';\")",
+      "Bash(php -r \"require ''vendor/autoload.php''; $trait = ''Spatie\\\\Permission\\\\Traits\\\\HasRoles''; echo class_exists\\($trait\\) ? ''OK'' : ''NOT FOUND'';\")",
+      "Bash(php -r \"spl_autoload_register\\(function\\($class\\) { $file = ''vendor/'' . str_replace\\([''\\\\\\\\'', ''\\\\\\\\\\\\\\\\''], ''/'', $class\\) . ''.php''; echo $file . PHP_EOL; }\\); class_exists\\(''Spatie\\\\\\\\Permission\\\\\\\\Traits\\\\\\\\HasRoles''\\);\")",
+      "Bash(composer dump-autoload:*)",
+      "Bash(find resources/views -name *.blade.php)",
+      "Bash(xargs ls:*)",
+      "Bash(find resources/views -path *components/pages*)",
+      "Bash(find vendor/livewire/flux -name *.blade.php)",
+      "Bash(vendor/bin/pint --dirty --format agent)",
+      "Bash(npm install:*)",
+      "WebSearch"
+    ]
+  }
+}

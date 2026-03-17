@@ -1,0 +1,21 @@
+{
+    "name": "acme/example-module",
+    "description": "Example boilerplate module demonstrating the extension system.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Acme\\ExampleModule\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Acme\\ExampleModule\\ExampleModuleServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.2"
+    }
+}
