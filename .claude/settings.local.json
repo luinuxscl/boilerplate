@@ -20,7 +20,8 @@
       "mcp__laravel-boost__application-info",
       "Bash(ls:*)",
       "Bash(git add:*)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(find:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
