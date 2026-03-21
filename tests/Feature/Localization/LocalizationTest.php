@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\LanguageSwitcher;
+use App\Livewire\UserMenu;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -83,6 +84,68 @@ describe('LanguageSwitcher component', function () {
 
         expect($user->fresh()->locale)->toBe('en');
         expect(session('locale'))->toBeNull();
+    });
+});
+
+describe('UserMenu component', function () {
+    test('mounts with current locale and supported locales', function () {
+        $user = User::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(UserMenu::class)
+            ->assertSet('currentLocale', config('app.locale'))
+            ->assertSet('locales', config('app.locale_names'));
+    });
+
+    test('authenticated user locale is persisted to database', function () {
+        $user = User::factory()->create(['locale' => 'en']);
+
+        Livewire::actingAs($user)
+            ->test(UserMenu::class)
+            ->call('switchLocale', 'es');
+
+        expect($user->fresh()->locale)->toBe('es');
+        expect(session('locale'))->toBe('es');
+    });
+
+    test('unsupported locale is rejected', function () {
+        $user = User::factory()->create(['locale' => 'en']);
+
+        Livewire::actingAs($user)
+            ->test(UserMenu::class)
+            ->call('switchLocale', 'fr');
+
+        expect($user->fresh()->locale)->toBe('en');
+        expect(session('locale'))->toBeNull();
+    });
+});
+
+describe('locale.switch route', function () {
+    test('authenticated user can switch locale via POST route', function () {
+        $user = User::factory()->create(['locale' => 'en']);
+
+        $this->actingAs($user)
+            ->post(route('locale.switch', 'es'))
+            ->assertRedirect();
+
+        expect($user->fresh()->locale)->toBe('es');
+    });
+
+    test('guest can switch locale via POST route', function () {
+        $this->post(route('locale.switch', 'es'))
+            ->assertRedirect();
+
+        expect(session('locale'))->toBe('es');
+    });
+
+    test('unsupported locale is ignored via POST route', function () {
+        $user = User::factory()->create(['locale' => 'en']);
+
+        $this->actingAs($user)
+            ->post(route('locale.switch', 'fr'))
+            ->assertRedirect();
+
+        expect($user->fresh()->locale)->toBe('en');
     });
 });
 

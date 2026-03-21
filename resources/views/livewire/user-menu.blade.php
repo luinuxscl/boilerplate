@@ -17,11 +17,34 @@
                 <flux:text class="truncate">{{ auth()->user()->email }}</flux:text>
             </div>
         </div>
+
         <flux:menu.separator />
+
         <flux:menu.radio.group>
             <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
                 {{ __('Settings') }}
             </flux:menu.item>
+        </flux:menu.radio.group>
+
+        <flux:menu.separator />
+
+        <flux:menu.radio.group>
+            @foreach ($locales as $code => $name)
+                <flux:menu.item
+                    wire:click="switchLocale('{{ $code }}')"
+                    :icon="$currentLocale === $code ? 'check' : 'globe'"
+                    wire:loading.attr="disabled"
+                    wire:target="switchLocale('{{ $code }}')"
+                    keep-open
+                >
+                    {{ $name }}
+                </flux:menu.item>
+            @endforeach
+        </flux:menu.radio.group>
+
+        <flux:menu.separator />
+
+        <flux:menu.radio.group>
             <form method="POST" action="{{ route('logout') }}" class="w-full">
                 @csrf
                 <flux:menu.item

@@ -68,11 +68,7 @@
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
-            <div class="px-2 pb-1">
-                <livewire:language-switcher />
-            </div>
-
-            <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            <livewire:user-menu />
         </flux:sidebar>
 
         <!-- Mobile User Menu -->
@@ -110,6 +106,24 @@
                         <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
                             {{ __('Settings') }}
                         </flux:menu.item>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <flux:menu.radio.group>
+                        @foreach (config('app.locale_names', ['en' => 'English']) as $code => $name)
+                            <form method="POST" action="{{ route('locale.switch', $code) }}" class="w-full">
+                                @csrf
+                                <flux:menu.item
+                                    as="button"
+                                    type="submit"
+                                    :icon="app()->getLocale() === $code ? 'check' : 'globe'"
+                                    class="w-full cursor-pointer"
+                                >
+                                    {{ $name }}
+                                </flux:menu.item>
+                            </form>
+                        @endforeach
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
