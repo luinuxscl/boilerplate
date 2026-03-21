@@ -68,6 +68,10 @@
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
+            <div class="px-2 pb-1">
+                <livewire:language-switcher />
+            </div>
+
             <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
         </flux:sidebar>
 
