@@ -41,7 +41,7 @@
                 </flux:tooltip>
             </flux:navbar>
 
-            <x-desktop-user-menu />
+            <livewire:user-menu />
         </flux:header>
 
         <!-- Mobile Menu -->
