@@ -21,7 +21,11 @@
       "Bash(ls:*)",
       "Bash(git add:*)",
       "Bash(git tag:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(php --version)",
+      "Bash(composer --version)",
+      "Bash(lsb_release -a)",
+      "Bash(sudo apt-get:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

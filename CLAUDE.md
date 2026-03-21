@@ -36,6 +36,7 @@ This project has domain-specific skills available. You MUST activate the relevan
 - `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
 - `fortify-development` — Laravel Fortify headless authentication backend development. Activate when implementing authentication features including login, registration, password reset, email verification, two-factor authentication (2FA/TOTP), profile updates, headless auth, authentication scaffolding, or auth guards in Laravel applications.
 - `blaze-optimize` — Set up and optimize Blade component rendering with Blaze. Use when installing Blaze, optimizing components, or configuring @blaze directives and strategies.
+- `laravel-docs` — Maintains boilerplate documentation up to date: README.md, CHANGELOG.md, docs/ feature and architecture files, and SKILL.md files. Activate after implementing a new module or feature, on release, when creating a new skill, or when the user says "update docs", "document this", "update changelog", "doc this feature", or similar.
 
 ## Conventions
 
