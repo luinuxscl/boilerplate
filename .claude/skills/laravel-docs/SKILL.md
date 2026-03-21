@@ -1,6 +1,6 @@
 ---
 name: laravel-docs
-description: Mantiene actualizada la documentación del boilerplate: README.md, CHANGELOG.md, documentación técnica por feature en docs/, y SKILL.md de cada skill. Úsala al terminar de implementar un módulo o feature, cuando el README esté desactualizado, al hacer un release, al crear un skill nuevo, o cuando digas "actualiza la documentación", "documenta esto", "update docs", "genera el changelog", "doc this feature", "documenta el módulo de X".
+description: Mantiene actualizada la documentación del boilerplate: README.md, CHANGELOG.md, CONTEXT.md, documentación técnica por feature en docs/, y SKILL.md de cada skill. Úsala al terminar de implementar un módulo o feature, cuando el README esté desactualizado, al hacer un release, al crear un skill nuevo, o cuando digas "actualiza la documentación", "documenta esto", "update docs", "genera el changelog", "doc this feature", "documenta el módulo de X", "actualiza el contexto".
 ---
 
 # Documentación del Boilerplate
@@ -15,6 +15,7 @@ Este skill mantiene sincronizada toda la documentación con el estado real del c
 - Se va a hacer un release (versión nueva en CHANGELOG)
 - El usuario pide explícitamente actualizar o crear documentación
 - El README describe features que ya no existen o no menciona las nuevas
+- Se añade, modifica o elimina cualquier feature, modelo, ruta, convención o comando relevante (actualizar `CONTEXT.md`)
 
 ## Responsibilities
 
@@ -29,6 +30,7 @@ Cada tipo de cambio tiene su archivo asignado:
 | Convenciones de desarrollo | `docs/development/conventions.md` |
 | Nuevo registry o contrato | `docs/architecture/registries.md` |
 | Setup o comandos dev | `docs/development/getting-started.md` |
+| Cualquier cambio significativo en stack, features, arquitectura, convenciones o comandos | `CONTEXT.md` |
 
 **Regla:** Nunca documentes detalles de implementación interna que pueden derivarse leyendo el código. Documenta el *qué* y el *por qué*, no el *cómo* línea por línea.
 
@@ -242,6 +244,40 @@ description: "Trigger phrases y cuándo activar. Incluye ejemplos literales de l
 
 ---
 
+## CONTEXT.md — AI Context Summary
+
+`CONTEXT.md` en la raíz es un snapshot del proyecto diseñado para compartir con otras IAs. Es el equivalente a un "briefing" que otra IA puede leer para entender el proyecto sin acceso al código.
+
+### Cuándo actualizar
+
+Actualiza `CONTEXT.md` siempre que se produzca cualquiera de estos cambios:
+
+| Cambio | Sección afectada en CONTEXT.md |
+|--------|-------------------------------|
+| Se añade/elimina un feature | `## Features` |
+| Cambia la versión de un package principal | `## Stack` |
+| Nuevo modelo Eloquent o cambio en PKs | `## Architecture → Models` |
+| Nueva convención de naming o coding | `## Code Conventions` |
+| Cambio en comandos de desarrollo | `## Development Commands` |
+| Nueva estructura de directorios relevante | `## Architecture → Directory Structure` |
+| Cambio en decisiones de diseño | `## Architecture → Key Design Decisions` |
+
+### Principios para CONTEXT.md
+
+- **Conciso sobre exhaustivo**: Una IA externa necesita orientarse, no reemplazar la lectura del código. Máximo una o dos líneas por feature.
+- **Contratos públicos, no implementación**: Documenta rutas, interfaces, convenciones — no lógica interna.
+- **Siempre sincronizado**: Si el README cambió, `CONTEXT.md` probablemente también debe cambiar.
+- **No duplicar README**: `CONTEXT.md` es más denso y orientado a IA; el README es más legible para humanos.
+
+### Lo que NO va en CONTEXT.md
+
+- Ejemplos de código extensos
+- Instrucciones de instalación paso a paso (eso es del README)
+- Detalles de implementación interna
+- Historial de cambios (eso es del CHANGELOG)
+
+---
+
 ## Common Pitfalls
 
 - **Documentar implementación interna**: La docs debe describir el contrato público, no el código interno. Si alguien tiene que leer el código de todas formas, la doc no sirve.
@@ -261,3 +297,4 @@ Antes de declarar la documentación terminada:
 - [ ] El CHANGELOG tiene la versión correcta y la fecha de hoy
 - [ ] Los archivos de `docs/features/` describen comportamiento real (verificar con `php artisan tinker` si es necesario)
 - [ ] No hay referencias a rutas, clases o métodos que ya no existen
+- [ ] `CONTEXT.md` refleja cualquier cambio en stack, features, arquitectura o convenciones
