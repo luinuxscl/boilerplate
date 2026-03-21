@@ -25,7 +25,9 @@
       "Bash(php --version)",
       "Bash(composer --version)",
       "Bash(lsb_release -a)",
-      "Bash(sudo apt-get:*)"
+      "Bash(sudo apt-get:*)",
+      "Bash(mkdir -p /home/luinux/.claude/skills/dev-workflow)",
+      "Bash(cp /home/luinux/Projects/boilerplate/.claude/skills/dev-workflow/SKILL.md /home/luinux/.claude/skills/dev-workflow/SKILL.md)"
     ]
   },
   "enableAllProjectMcpServers": true,
